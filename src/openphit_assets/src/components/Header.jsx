@@ -9,11 +9,20 @@ import CURRENT_USER_ID from "../index";
 
 function Header() {
   const [userOwnedGallery, setOwnedGallery] = useState();
+  const [listingGallery, setListingGallery] = useState();
 
   async function getNFTs() {
     const userNFTIds = await openphit.getOwnedNFTs(CURRENT_USER_ID);
     console.log(userNFTIds);
-    setOwnedGallery(<Gallery title="My NFTs" ids={userNFTIds} />);
+    setOwnedGallery(
+      <Gallery title="My NFTs" ids={userNFTIds} role="collection" />
+    );
+
+    const listedNFTIds = await openphit.getListedNFTs();
+    console.log(listedNFTIds);
+    setListingGallery(
+      <Gallery title="Discover" ids={listedNFTIds} role="discover" />
+    );
   }
 
   useEffect(() => {
@@ -29,7 +38,7 @@ function Header() {
             <img className="header-logo-11" src={logo} />
             <div className="header-vertical-9"></div>
             <Link to="/">
-              <h5 className="Typography-root header-logo-text">open Phit</h5>
+              <h5 className="Typography-root header-logo-text">Open Phit</h5>
             </Link>
             <div className="header-empty-6"></div>
             <div className="header-space-8"></div>
@@ -49,9 +58,7 @@ function Header() {
         <Route exact path="/">
           <img className="bottom-space" src={homeImage} />
         </Route>
-        <Route path="/discover">
-          <h1>Discover</h1>
-        </Route>
+        <Route path="/discover">{listingGallery}</Route>
         <Route path="/minter">
           <Minter />
         </Route>
