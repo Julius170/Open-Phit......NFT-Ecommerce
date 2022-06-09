@@ -1,2 +1,4 @@
-service : {
-}
+type NFT = 
+ service {
+ };
+service : (text, principal, vec nat8) -> NFT
