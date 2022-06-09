@@ -16,7 +16,7 @@ function Minter() {
     const imageArray = await image.arrayBuffer();
     const imageByteData = [...new Uint8Array(imageArray)];
 
-    const newNFTID = await openphit.mint(imageByteData, name);
+    const newNFTID = await Openphit.mint(imageByteData, name);
     console.log(newNFTID.toText());
     setNFTPrincipal(newNFTID);
     setLoaderHidden(true);
