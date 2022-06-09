@@ -30,7 +30,9 @@ npm start
 ```
 
 3. Deploy canisters
-
+```
+run ("dfx identity get-principal") to get your principal id and replace with the one below
+```
 ```
 dfx deploy --argument='("CryptoDunks #123", principal 
 "ttc6g-crsou-a53di-rvqw7-5mcbg-e5lpw-l3qzk-z4o2d-yzmb7-7xhf7-cae", (vec {137; 80; 78; 71; 13; 10; 26; 10; 0; 0; 0; 13; 73; 72; 68; 82; 0; 0; 0; 10; 0; 0; 0; 10; 8; 6; 0; 0; 0; 141; 50; 207;
